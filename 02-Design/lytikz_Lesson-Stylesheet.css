@@ -1,0 +1,287 @@
+/*
+ * lytikz_Lesson-Stylesheet.css
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Master stylesheet for MSc-AI Linear Algebra lesson notebooks.
+ * Design: Concept A — Refined Warm
+ * Fonts:  Sora (headings) · JetBrains Mono (body, code, labels)
+ * Status: Locked — do not modify without updating Notebook_Design-Spec.md
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * USAGE
+ * Paste the full contents of this file inside a <style> tag in Cell 1 of
+ * every lesson notebook. Do not link externally — DataSpell does not resolve
+ * relative CSS paths in markdown cells.
+ *
+ * DATASPELL RENDERING RULES (summary — full detail in Notebook_Design-Spec.md)
+ *   1. All HTML in markdown cells must be flush left — zero indentation.
+ *   2. Styled cells must be pure HTML — no mixed Markdown syntax.
+ *   3. All prose must be wrapped in <p> tags.
+ *   4. Accent strips must be real child <div> elements — no ::before/::after.
+ *   5. Do not use border-top on the same element as the panel frame.
+ *   6. Use .term not .kt for key term highlighting.
+ *   7. No emojis in any markdown cell — they break rendering entirely.
+ *   8. Panel backgrounds must be opaque (#111110).
+ *   9. Cell 1 is the stylesheet. Cell 2 is the sacrificial header strip.
+ *  10. Left-align panels — do not centre.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+
+/* ── Shell ──────────────────────────────────────────────────────────────────*/
+
+.lesson-shell {
+max-width: 900px;
+margin: 0;
+font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Header strip (Cell 2 — sacrificial) ────────────────────────────────────*/
+
+.header-strip {
+max-width: 900px;
+padding: 6px 0 6px 36px;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.50rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+}
+
+.header-strip .brand { color: rgba(196,240,66,0.35); }
+.header-strip .sep   { color: rgba(228,224,218,0.12); margin: 0 10px; }
+.header-strip .meta  { color: rgba(228,224,218,0.12); letter-spacing: 1.5px; }
+
+/* ── Panels ──────────────────────────────────────────────────────────────────*/
+
+.panel {
+position: relative;
+overflow: hidden;
+width: 100%;
+background: #111110;
+border: none;
+border-radius: 6px;
+box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07);
+padding: 36px 44px 40px;
+margin: 0 0 20px 0;
+font-family: 'JetBrains Mono', monospace;
+font-size: 14px;
+line-height: 1.7;
+}
+
+.panel-title { padding: 40px 44px 44px; }
+
+/* ── Accent strips ───────────────────────────────────────────────────────────*/
+/*
+ * Always use a real child <div> — never border-top or ::before.
+ * Green:  Title, Concept, Worked Example panels.
+ * Amber:  AI Connection, Workforce Analytics, Challenge panels.
+ * None:   Orientation/Recap, Reflection, Next Lesson panels.
+ */
+
+.accent-strip {
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+}
+
+.accent-green { background: #c4f042; }
+.accent-amber { background: #f0a830; }
+
+/* ── Section row (label + hairline rule) ─────────────────────────────────────*/
+
+.sec-row {
+display: flex;
+align-items: center;
+gap: 18px;
+margin-bottom: 24px;
+padding-bottom: 12px;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sec-rule {
+flex: 1;
+height: 1px;
+background: rgba(255,255,255,0.05);
+}
+
+.sec-label {
+font-size: 0.50rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+font-weight: 700;
+flex-shrink: 0;
+}
+
+.sec-label.green { color: rgba(196,240,66,0.55); }
+.sec-label.amber { color: rgba(240,168,48,0.55); }
+.sec-label.muted { color: rgba(228,224,218,0.22); }
+
+/* ── Title panel elements ────────────────────────────────────────────────────*/
+
+.wk {
+font-size: 0.52rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(196,240,66,0.55);
+font-weight: 700;
+margin-bottom: 16px;
+}
+
+.lesson-title {
+font-family: 'Sora', sans-serif;
+font-size: 1.90rem;
+font-weight: 700;
+color: #e8e4de;
+line-height: 1.1;
+letter-spacing: -0.02em;
+margin-bottom: 0;
+}
+
+.title-rule {
+width: 48px;
+height: 2px;
+background: #c4f042;
+opacity: 0.40;
+margin-top: 20px;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────────*/
+
+.panel h3 {
+font-family: 'Sora', sans-serif;
+font-size: 1.10rem;
+font-weight: 600;
+color: #e8e4de;
+line-height: 1.25;
+letter-spacing: -0.01em;
+margin: 0 0 20px 0;
+}
+
+.panel p {
+font-size: 0.80rem;
+color: #c5c0b8;
+line-height: 1.95;
+letter-spacing: 0.01em;
+margin: 0 0 16px 0;
+}
+
+.panel p:last-child { margin-bottom: 0; }
+
+/* ── Key terms ───────────────────────────────────────────────────────────────*/
+/*
+ * Use class="term" — not .kt (DataSpell injects underlines on .kt).
+ * The aggressive selector stack suppresses DataSpell's own styling.
+ */
+
+.term,
+.panel .term,
+.panel strong.term,
+.panel span.term {
+color: #c4f042 !important;
+font-weight: 700 !important;
+text-decoration: none !important;
+border-bottom: none !important;
+box-shadow: none !important;
+background-image: none !important;
+}
+
+/* ── Nested cards ────────────────────────────────────────────────────────────*/
+
+.inner-card {
+margin: 24px 0;
+padding: 22px 28px;
+border-left: 2px solid rgba(240,168,48,0.35);
+background: rgba(240,168,48,0.03);
+border-radius: 0 4px 4px 0;
+}
+
+.inner-note {
+margin: 24px 0;
+padding: 22px 28px;
+border-left: 2px solid rgba(232,69,60,0.35);
+background: rgba(232,69,60,0.025);
+border-radius: 0 4px 4px 0;
+}
+
+.inner-formal {
+margin: 24px 0;
+padding: 22px 28px;
+border-left: 2px solid rgba(196,240,66,0.20);
+background: rgba(196,240,66,0.02);
+border-radius: 0 4px 4px 0;
+}
+
+.inner-card-label {
+font-size: 0.46rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(240,168,48,0.55);
+margin-bottom: 12px;
+font-weight: 700;
+}
+
+.inner-note-label {
+font-size: 0.46rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(232,69,60,0.55);
+margin-bottom: 12px;
+font-weight: 700;
+}
+
+.inner-formal-label {
+font-size: 0.46rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(196,240,66,0.40);
+margin-bottom: 12px;
+font-weight: 700;
+}
+
+.inner-card p,
+.inner-note p,
+.inner-formal p {
+color: #b5b0a8;
+font-size: 0.77rem;
+}
+
+/* ── Inline code ─────────────────────────────────────────────────────────────*/
+
+code.inline {
+background: rgba(196,240,66,0.06);
+color: #c4f042;
+padding: 2px 7px;
+border-radius: 2px;
+font-size: 0.78rem;
+text-decoration: none !important;
+}
+
+/* ── Utilities ───────────────────────────────────────────────────────────────*/
+
+.panel-rule {
+height: 1px;
+background: rgba(255,255,255,0.05);
+margin: 24px 0;
+}
+
+.next-label {
+font-size: 0.46rem;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: rgba(228,224,218,0.22);
+font-weight: 700;
+margin-bottom: 10px;
+}
+
+.next-line {
+font-size: 0.75rem;
+color: #8f8a82;
+letter-spacing: 0.01em;
+}
+
+.next-line strong {
+color: #c4f042;
+font-weight: 700;
+}

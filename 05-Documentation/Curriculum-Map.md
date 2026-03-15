@@ -2,7 +2,7 @@
 **Project:** MSc-AI Linear Algebra
 **Brand:** lytikz.ai
 **Status:** Draft — pending sign off
-**Last updated:** 2026-03-09
+**Last updated:** 2026-03-11
 
 ---
 
@@ -31,9 +31,9 @@ Lessons already built are marked as complete.
 | Session | Title | Context | Status |
 |---|---|---|---|
 | L1 | Scalars, Vectors, and Two Ways of Seeing Them | Employee profile vector | Complete |
-| L2 | Vectors in a Different Light | Job role profile or engagement survey vector | Pending |
-| L3 | Vectors in the Wild | Recruitment funnel or absence pattern vector | Pending |
-| Q&A | Week 1 Consolidation | Scalar vs vector, order, similarity, raw scale | Pending |
+| L2 | Vectors in a Different Light | Job role profile or engagement survey vector | Complete |
+| L3 | Vectors in the Wild | Recruitment funnel or absence pattern vector | Complete |
+| Q&A | Week 1 Consolidation | Scalar vs vector, order, similarity, raw scale | Complete |
 
 ---
 
